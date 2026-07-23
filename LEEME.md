@@ -54,5 +54,11 @@ confianza (calendario + reseñas), no para cerrar la reserva. No se usa Booking.
 
 *(También se puede publicar con GitHub para actualizarla fácil — te guío cuando quieras.)*
 
+## 🖼️ Crédito de la foto del inicio
+
+La foto de la muralla (`assets/img/muralla-cartagena.jpg`) es de **Marco Almanza** vía
+**Unsplash**, bajo la **Licencia Unsplash** (uso comercial libre, sin atribución obligatoria).
+Fuente: https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-7GUoxMaq40c
+
 ---
 Paleta de marca: Azul marino `#16243F` · Azul cielo `#2E9BD6` · Naranja `#F5A623`
