@@ -23,7 +23,7 @@ Haz **doble clic** en `index.html`. Se abre en tu navegador con todo funcionando
 ## ✅ Funciones incluidas
 
 - **Bilingüe ES / EN** — botón arriba a la derecha. Recuerda el idioma elegido.
-- **Botón de WhatsApp** a +57 322 281 0384 (flotante y en varios lugares) con mensaje predefinido.
+- **Botón de WhatsApp** a +57 305 208 0277 (flotante y en varios lugares) con mensaje predefinido.
 - **Galería** con visor ampliado (clic en cualquier foto).
 - **Diseño responsive** — se ve bien en celular, tablet y computador.
 - **Mapa** del Centro Histórico de Cartagena.

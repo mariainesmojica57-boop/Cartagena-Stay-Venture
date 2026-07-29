@@ -269,6 +269,40 @@ section { scroll-margin-top: var(--header-h); }
 .cta-band__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
 /* ==========================================================================
+   Reserva / Booking form
+   ========================================================================== */
+.reserva { background: var(--cream); }
+.reserva__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 54px; align-items: start; }
+.reserva__lead { color: var(--muted); margin: 6px 0 26px; max-width: 460px; }
+.reserva__contact { display: grid; gap: 14px; margin-bottom: 24px; }
+.reserva__contact li { display: flex; align-items: center; gap: 12px; }
+.reserva__contact a { font-weight: 500; color: var(--navy); transition: color .2s; word-break: break-word; }
+.reserva__contact a:hover { color: var(--sky-600); }
+.reserva__ic { flex: none; width: 24px; height: 24px; display: grid; place-items: center; }
+.reserva__ic svg { width: 21px; height: 21px; }
+.reserva__times { display: flex; gap: 22px; flex-wrap: wrap; color: var(--muted); font-size: .9rem; font-weight: 500; }
+.reserva__times > span { display: inline-flex; align-items: center; gap: 7px; }
+.reserva__times svg { width: 17px; height: 17px; color: var(--orange); }
+
+.reserva__form { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-md); display: grid; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field label { font-family: var(--font-head); font-weight: 600; font-size: .9rem; color: var(--navy); }
+.reserva__form input, .reserva__form select, .reserva__form textarea {
+  font-family: var(--font-body); font-size: 1rem; color: var(--ink);
+  padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; width: 100%;
+  transition: border-color .2s, box-shadow .2s;
+}
+.reserva__form input:focus, .reserva__form select:focus, .reserva__form textarea:focus {
+  outline: none; border-color: var(--sky); box-shadow: 0 0 0 3px var(--sky-100);
+}
+.reserva__form textarea { resize: vertical; min-height: 96px; }
+.reserva__form button { margin-top: 6px; }
+.reserva__note { text-align: center; color: var(--muted); font-size: .84rem; margin-top: 2px; }
+@media (max-width: 1024px) { .reserva__grid { grid-template-columns: 1fr; gap: 34px; } }
+@media (max-width: 500px) { .reserva__grid .field-row { grid-template-columns: 1fr; } .reserva__form { padding: 22px; } }
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 .footer { background: var(--sand); color: var(--muted); padding: 64px 0 30px; border-top: 1px solid var(--line); }

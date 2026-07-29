@@ -95,7 +95,43 @@
     });
   }
 
-  /* ---------- 6. Footer year ---------- */
+  /* ---------- 6. Booking form -> WhatsApp ---------- */
+  const bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    const WA_NUMBER = '573052080277';
+    const val = (id) => {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    };
+    const fmtDate = (d) => {
+      // d viene como yyyy-mm-dd -> lo dejamos dd/mm/yyyy para leerlo fácil
+      if (!d || d.indexOf('-') === -1) return d;
+      const p = d.split('-');
+      return p[2] + '/' + p[1] + '/' + p[0];
+    };
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = val('bf-nombre');
+      const llegada = val('bf-llegada');
+      const salida = val('bf-salida');
+      const huespedes = val('bf-huespedes');
+      const apto = val('bf-apto');
+      const mensaje = val('bf-mensaje');
+
+      let t = '¡Hola Cartagena Stay Venture! Quiero reservar.';
+      if (nombre)    t += '\nNombre: ' + nombre;
+      if (apto)      t += '\nApartamento: ' + apto;
+      if (llegada)   t += '\nLlegada: ' + fmtDate(llegada);
+      if (salida)    t += '\nSalida: ' + fmtDate(salida);
+      if (huespedes) t += '\nHuéspedes: ' + huespedes;
+      if (mensaje)   t += '\nMensaje: ' + mensaje;
+
+      const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(t);
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+
+  /* ---------- 7. Footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
