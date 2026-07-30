@@ -343,6 +343,11 @@ section { scroll-margin-top: var(--header-h); }
 }
 .wa-float:hover { transform: scale(1.08); }
 .wa-float svg { width: 32px; height: 32px; color: #fff; }
+
+/* Botón flotante: Asistente IA (abre el chat del agente) */
+.ai-float { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 60px; height: 60px; border-radius: 50%; background: var(--sky); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(46,155,214,.5); transition: transform .2s; }
+.ai-float:hover { transform: scale(1.08); }
+.ai-float svg { width: 32px; height: 32px; color: #fff; }
 @keyframes pulse { 0%{ box-shadow: 0 0 0 0 rgba(37,211,102,.5);} 70%{ box-shadow: 0 0 0 16px rgba(37,211,102,0);} 100%{ box-shadow: 0 0 0 0 rgba(37,211,102,0);} }
 
 /* ==========================================================================
