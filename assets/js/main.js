@@ -131,7 +131,51 @@
     });
   }
 
-  /* ---------- 7. Footer year ---------- */
+  /* ---------- 7. AI assistant chat window ---------- */
+  const aiBtn = document.querySelector('.ai-float');
+  if (aiBtn) {
+    const chatUrl = aiBtn.getAttribute('href');
+    const panel = document.createElement('div');
+    panel.className = 'ai-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', 'Asistente virtual');
+    panel.innerHTML =
+      '<div class="ai-panel__head">' +
+        '<img src="assets/img/logo.png" alt="Cartagena Stay Venture" />' +
+        '<div class="ai-panel__title">Asistente virtual<small>Cartagena Stay Venture</small></div>' +
+        '<div class="ai-panel__actions">' +
+          '<a class="ai-panel__btn" href="' + chatUrl + '" target="_blank" rel="noopener" aria-label="Abrir en una pestaña" title="Abrir en una pestaña"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/></svg></a>' +
+          '<button type="button" class="ai-panel__btn ai-panel__close" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="ai-panel__body"></div>';
+    document.body.appendChild(panel);
+
+    const body = panel.querySelector('.ai-panel__body');
+    let loaded = false;
+    const openPanel = () => {
+      if (!loaded) {
+        const ifr = document.createElement('iframe');
+        ifr.src = chatUrl;
+        ifr.title = 'Asistente virtual';
+        ifr.setAttribute('allow', 'microphone; clipboard-write');
+        ifr.addEventListener('load', () => panel.classList.add('loaded'));
+        body.appendChild(ifr);
+        loaded = true;
+      }
+      panel.classList.add('open');
+    };
+    const closePanel = () => panel.classList.remove('open');
+
+    aiBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      panel.classList.contains('open') ? closePanel() : openPanel();
+    });
+    panel.querySelector('.ai-panel__close').addEventListener('click', closePanel);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
+  }
+
+  /* ---------- 8. Footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
