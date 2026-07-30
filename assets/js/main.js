@@ -173,6 +173,32 @@
     });
     panel.querySelector('.ai-panel__close').addEventListener('click', closePanel);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
+
+    // Si la burbuja NATIVA de Relevance carga, ocultamos este botón de respaldo (evita duplicados)
+    let settled = false;
+    const hideFallback = () => { aiBtn.style.display = 'none'; panel.style.display = 'none'; };
+    const looksRelevance = (n) => {
+      try {
+        if (n === aiBtn || n === panel) return false;
+        const cls = (n.getAttribute && (n.getAttribute('class') || '')) + '';
+        if (/relevance/i.test(cls) || /relevance/i.test(n.id || '')) return true;
+        return !!(n.querySelector && n.querySelector('[class*="relevance" i],[id*="relevance" i],iframe[src*="relevanceai"]'));
+      } catch (e) { return false; }
+    };
+    if ('MutationObserver' in window) {
+      const obs = new MutationObserver((muts) => {
+        if (settled) return;
+        for (const m of muts) {
+          for (const n of m.addedNodes) {
+            if (n.nodeType === 1 && looksRelevance(n)) {
+              settled = true; obs.disconnect(); hideFallback(); return;
+            }
+          }
+        }
+      });
+      obs.observe(document.body, { childList: true });
+      setTimeout(() => { settled = true; obs.disconnect(); }, 10000);
+    }
   }
 
   /* ---------- 8. Footer year ---------- */

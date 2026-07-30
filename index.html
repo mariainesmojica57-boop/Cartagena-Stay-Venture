@@ -361,11 +361,14 @@
     <button class="lightbox__nav next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
   </div>
 
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 
-  <!-- Botón flotante: Asistente IA (abre el chat del agente de Relevance AI) -->
+  <!-- Botón flotante: Asistente IA (respaldo si la burbuja nativa no carga) -->
   <a class="ai-float" href="https://app.relevanceai.com/agents/bcbe5a/86743503-8dd4-4f3e-90de-b4a9677a89e0/46ce3a86-3ef4-45c9-a05d-d14636642556/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%234AB3E8&bubble_icon=pd%2Fchat&input_placeholder_text=Escribe+tu+mensaje...&hide_logo=false&hide_description=false" target="_blank" rel="noopener" aria-label="Chatea con nuestro asistente" title="Chatea con nuestro asistente">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 3h6M2 13v2M22 13v2M9.5 17.5h5"/><circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="currentColor" stroke="none"/></svg>
   </a>
+
+  <!-- Relevance AI - Burbuja de chat nativa -->
+  <script defer data-relevanceai-share-id="bcbe5a/86743503-8dd4-4f3e-90de-b4a9677a89e0/46ce3a86-3ef4-45c9-a05d-d14636642556" src="https://app.relevanceai.com/embed/chat-bubble.js" data-share-styles="hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%234AB3E8&bubble_icon=pd%2Fchat&input_placeholder_text=Escribe+tu+mensaje...&hide_logo=false&hide_description=false"></script>
 </body>
 </html>
