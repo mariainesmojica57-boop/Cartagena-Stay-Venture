@@ -336,7 +336,7 @@ section { scroll-margin-top: var(--header-h); }
 
 /* Floating WhatsApp */
 .wa-float {
-  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  position: fixed; bottom: 24px; left: 24px; z-index: 90;
   width: 60px; height: 60px; border-radius: 50%; background: var(--whatsapp);
   display: grid; place-items: center; box-shadow: 0 8px 24px rgba(37,211,102,.5);
   transition: transform .2s; animation: pulse 2.5s infinite;
