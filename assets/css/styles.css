@@ -353,7 +353,7 @@ section { scroll-margin-top: var(--header-h); }
 .ai-panel {
   position: fixed; bottom: 96px; right: 24px; z-index: 95;
   width: min(390px, calc(100vw - 32px)); height: min(620px, calc(100vh - 130px));
-  background: var(--sky-100); border: 1.5px solid var(--sky); border-radius: 20px;
+  background: var(--sky); border: none; border-radius: 20px;
   box-shadow: 0 24px 64px rgba(22,36,63,.30); overflow: hidden;
   display: none; flex-direction: column;
 }
@@ -367,7 +367,7 @@ section { scroll-margin-top: var(--header-h); }
 .ai-panel__btn { color: #fff; width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; background: rgba(255,255,255,.16); transition: background .2s; }
 .ai-panel__btn:hover { background: rgba(255,255,255,.30); }
 .ai-panel__btn svg { width: 18px; height: 18px; }
-.ai-panel__body { flex: 1; background: var(--sky-100); position: relative; }
+.ai-panel__body { flex: 1; background: #fff; margin: 0 10px 10px; border-radius: 0 0 14px 14px; overflow: hidden; position: relative; }
 .ai-panel__body::before { content: "Cargando el asistente…"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--sky-600); font-size: .9rem; }
 .ai-panel__body iframe { position: relative; width: 100%; height: 100%; border: 0; display: block; }
 .ai-panel.loaded .ai-panel__body::before { display: none; }
