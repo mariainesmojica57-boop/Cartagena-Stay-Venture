@@ -144,6 +144,7 @@
         '<img src="assets/img/logo.png" alt="Cartagena Stay Venture" />' +
         '<div class="ai-panel__title">Asistente virtual<small>Cartagena Stay Venture</small></div>' +
         '<div class="ai-panel__actions">' +
+          '<button type="button" class="ai-panel__btn ai-panel__refresh" aria-label="Reiniciar conversación" title="Reiniciar conversación"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></button>' +
           '<a class="ai-panel__btn" href="' + chatUrl + '" target="_blank" rel="noopener" aria-label="Abrir en una pestaña" title="Abrir en una pestaña"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/></svg></a>' +
           '<button type="button" class="ai-panel__btn ai-panel__close" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>' +
         '</div>' +
@@ -172,33 +173,11 @@
       panel.classList.contains('open') ? closePanel() : openPanel();
     });
     panel.querySelector('.ai-panel__close').addEventListener('click', closePanel);
+    panel.querySelector('.ai-panel__refresh').addEventListener('click', () => {
+      const ifr = body.querySelector('iframe');
+      if (ifr) { panel.classList.remove('loaded'); ifr.src = chatUrl; }
+    });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
-
-    // Si la burbuja NATIVA de Relevance carga, ocultamos este botón de respaldo (evita duplicados)
-    let settled = false;
-    const hideFallback = () => { aiBtn.style.display = 'none'; panel.style.display = 'none'; };
-    const looksRelevance = (n) => {
-      try {
-        if (n === aiBtn || n === panel) return false;
-        const cls = (n.getAttribute && (n.getAttribute('class') || '')) + '';
-        if (/relevance/i.test(cls) || /relevance/i.test(n.id || '')) return true;
-        return !!(n.querySelector && n.querySelector('[class*="relevance" i],[id*="relevance" i],iframe[src*="relevanceai"]'));
-      } catch (e) { return false; }
-    };
-    if ('MutationObserver' in window) {
-      const obs = new MutationObserver((muts) => {
-        if (settled) return;
-        for (const m of muts) {
-          for (const n of m.addedNodes) {
-            if (n.nodeType === 1 && looksRelevance(n)) {
-              settled = true; obs.disconnect(); hideFallback(); return;
-            }
-          }
-        }
-      });
-      obs.observe(document.body, { childList: true });
-      setTimeout(() => { settled = true; obs.disconnect(); }, 10000);
-    }
   }
 
   /* ---------- 8. Footer year ---------- */
