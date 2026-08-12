@@ -13,6 +13,39 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---------- 1b. Hero video autoplay (refuerzo para móvil) ---------- */
+  const heroVideo = document.querySelector('.hero__video');
+  if (heroVideo) {
+    // Algunos navegadores móviles solo hacen autoplay si 'muted' y 'playsinline'
+    // están fijados como propiedades, no solo como atributos.
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    heroVideo.setAttribute('muted', '');
+    heroVideo.playsInline = true;
+    heroVideo.setAttribute('playsinline', '');
+
+    const tryPlayHero = () => {
+      const p = heroVideo.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+    };
+
+    tryPlayHero();
+    heroVideo.addEventListener('loadeddata', tryPlayHero, { once: true });
+    heroVideo.addEventListener('canplay', tryPlayHero, { once: true });
+
+    // Respaldo: si el navegador bloquea el autoplay, arranca en la primera
+    // interacción del usuario (toque, scroll o clic).
+    const kickHero = () => {
+      tryPlayHero();
+      window.removeEventListener('touchstart', kickHero);
+      window.removeEventListener('scroll', kickHero);
+      document.removeEventListener('click', kickHero);
+    };
+    window.addEventListener('touchstart', kickHero, { passive: true, once: true });
+    window.addEventListener('scroll', kickHero, { passive: true, once: true });
+    document.addEventListener('click', kickHero, { once: true });
+  }
+
   /* ---------- 2. Mobile menu ---------- */
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.nav');
