@@ -359,10 +359,12 @@ h2.sec .num { color: var(--sky-600); font-size: .82rem; font-weight: 700; border
 /* ==========================================================================
    Footer
    ========================================================================== */
-.footer { background: var(--navy); color: rgba(255,255,255,.72); padding: 64px 0 30px; }
-.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
-.footer__brand img { height: 88px; margin-bottom: 16px; }
-.footer__brand p { font-size: .95rem; max-width: 320px; }
+.footer { background: var(--navy); color: rgba(255,255,255,.72); padding: 0 0 30px; }
+.footer__top { background: #fff; padding: 40px 0 36px; }
+.footer__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 52px; margin-bottom: 44px; }
+.footer__brand { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.footer__brand img { height: 104px; margin-bottom: 12px; }
+.footer__brand p { color: var(--muted); font-size: .97rem; max-width: 480px; margin: 0 auto; }
 .footer h4 { color: #fff; font-size: 1rem; margin-bottom: 18px; }
 .footer__links li { margin-bottom: 11px; }
 .footer__links a { font-size: .94rem; transition: color .2s; }
