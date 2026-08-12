@@ -1,23 +1,24 @@
 /* ==========================================================================
    Cartagena Stay Venture — Design System
-   Paleta de marca: Navy #16243F · Azul cielo #2E9BD6 · Naranja #F5A623
+   Paleta oficial del Brand Book:
+   Azul marino #0E2B3C · Azul Caribe #4AB3E8 · Naranja atardecer #E6951A · Blanco #FFFFFF
    ========================================================================== */
 
 :root {
-  --navy:        #16243F;
-  --navy-700:    #1F3357;
-  --navy-600:    #2A4574;
-  --sky:         #2E9BD6;
-  --sky-600:     #1E86BF;
-  --sky-100:     #E4F3FB;
-  --orange:      #F5A623;
-  --orange-600:  #E0900C;
-  --orange-100:  #FDF0D8;
-  --sand:        #FBF7F0;
-  --cream:       #FFFDF9;
-  --ink:         #1A2233;
-  --muted:       #5B6676;
-  --line:        #E7E2D8;
+  --navy:        #0E2B3C;   /* Azul marino oficial (base) */
+  --navy-700:    #12384D;   /* Marino suave (fondos/hover) */
+  --navy-600:    #1C4A63;   /* Navy claro para degradados */
+  --sky:         #4AB3E8;   /* Azul Caribe oficial */
+  --sky-600:     #2C8FC4;   /* Caribe más oscuro (texto/enlaces sobre claro) */
+  --sky-100:     #EAF6FD;   /* Azul cielo muy claro (secciones suaves) */
+  --orange:      #E6951A;   /* Naranja atardecer oficial (acción) */
+  --orange-600:  #C67C0C;   /* Naranja hover */
+  --orange-100:  #FBEACB;   /* Naranja suave */
+  --sand:        #F4F8FB;   /* Fondo alterno frío muy claro */
+  --cream:       #FFFFFF;   /* Blanco limpio */
+  --ink:         #14293A;   /* Texto principal (casi marino) */
+  --muted:       #5B6B75;   /* Gris texto secundario (brand) */
+  --line:        #E4E9EC;   /* Borde / líneas (brand) */
   --white:       #FFFFFF;
   --whatsapp:    #25D366;
 
@@ -71,6 +72,13 @@ section { scroll-margin-top: var(--header-h); }
 .section-title { font-size: clamp(1.9rem, 4vw, 2.9rem); margin-bottom: 16px; }
 .section-sub { color: var(--muted); font-size: 1.08rem; max-width: 620px; margin: 0 auto; }
 .section-head { margin-bottom: 56px; }
+
+/* ---------- Dark (navy) sections ---------- */
+.section--dark { background: var(--navy); color: #fff; }
+.section--dark .eyebrow { color: var(--sky); }
+.section--dark h1, .section--dark h2, .section--dark h3, .section--dark h4 { color: #fff; }
+.section--dark .section-title { color: #fff; }
+.section--dark .section-sub, .section--dark p { color: rgba(255,255,255,.82); }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -237,14 +245,14 @@ section { scroll-margin-top: var(--header-h); }
 /* ==========================================================================
    Location
    ========================================================================== */
-.location { background: var(--sand); color: var(--ink); }
+.location { background: var(--sky-100); color: var(--ink); }
 .location h2 { color: var(--navy); }
 .location__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
 .location__text .eyebrow { color: var(--orange-600); }
 .location__text p { color: var(--muted); margin-bottom: 18px; }
 .location__list { display: grid; gap: 16px; margin-top: 26px; }
 .loc-item { display: flex; gap: 14px; align-items: flex-start; }
-.loc-item__icon { flex: none; width: 44px; height: 44px; border-radius: 12px; background: var(--sky-100); color: var(--sky-600); display: grid; place-items: center; }
+.loc-item__icon { flex: none; width: 44px; height: 44px; border-radius: 12px; background: #fff; color: var(--sky-600); display: grid; place-items: center; box-shadow: var(--shadow-sm); }
 .loc-item__icon svg { width: 22px; height: 22px; }
 .loc-item h4 { color: var(--navy); font-size: 1.02rem; margin-bottom: 2px; }
 .loc-item p { color: var(--muted); font-size: .92rem; margin: 0; }
@@ -254,11 +262,13 @@ section { scroll-margin-top: var(--header-h); }
 /* ==========================================================================
    Host / About
    ========================================================================== */
-.host { background: var(--sand); border-top: 1px solid var(--line); }
+.host { background: var(--navy); color: #fff; }
+.host .eyebrow { color: var(--sky); }
+.host h2, .host .section-title { color: #fff; }
 .host__grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 50px; align-items: center; }
-.host__media { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 1; }
+.host__media { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 1; }
 .host__media img { width: 100%; height: 100%; object-fit: cover; }
-.host blockquote { font-family: var(--font-script); font-size: 1.7rem; color: var(--navy); line-height: 1.35; margin: 18px 0; }
+.host blockquote { font-family: var(--font-script); font-size: 1.9rem; color: var(--sky); line-height: 1.35; margin: 18px 0; }
 
 /* ==========================================================================
    CTA band
@@ -271,7 +281,7 @@ section { scroll-margin-top: var(--header-h); }
 /* ==========================================================================
    Reserva / Booking form
    ========================================================================== */
-.reserva { background: var(--cream); }
+.reserva { background: var(--sand); }
 .reserva__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 54px; align-items: start; }
 .reserva__lead { color: var(--muted); margin: 6px 0 26px; max-width: 460px; }
 .reserva__contact { display: grid; gap: 14px; margin-bottom: 24px; }
@@ -305,9 +315,9 @@ section { scroll-margin-top: var(--header-h); }
 /* ==========================================================================
    Reseñas / Reviews
    ========================================================================== */
-.reviews { background: var(--white); border-top: 1px solid var(--line); }
+.reviews { background: var(--sky-100); }
 .reviews__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-.review-card { background: var(--sand); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
+.review-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-md); display: flex; flex-direction: column; }
 .review-card__stars { color: var(--orange); letter-spacing: 3px; font-size: 1.05rem; margin-bottom: 14px; }
 .review-card__text { color: var(--ink); font-style: italic; line-height: 1.7; margin-bottom: 18px; flex: 1; }
 .review-card__by { margin: 0; font-size: .95rem; }
@@ -349,21 +359,21 @@ h2.sec .num { color: var(--sky-600); font-size: .82rem; font-weight: 700; border
 /* ==========================================================================
    Footer
    ========================================================================== */
-.footer { background: var(--sand); color: var(--muted); padding: 64px 0 30px; border-top: 1px solid var(--line); }
+.footer { background: var(--navy); color: rgba(255,255,255,.72); padding: 64px 0 30px; }
 .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
 .footer__brand img { height: 88px; margin-bottom: 16px; }
 .footer__brand p { font-size: .95rem; max-width: 320px; }
-.footer h4 { color: var(--navy); font-size: 1rem; margin-bottom: 18px; }
+.footer h4 { color: #fff; font-size: 1rem; margin-bottom: 18px; }
 .footer__links li { margin-bottom: 11px; }
 .footer__links a { font-size: .94rem; transition: color .2s; }
 .footer__links a:hover { color: var(--sky); }
 .footer__contact li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; font-size: .94rem; }
 .footer__contact svg { width: 18px; height: 18px; color: var(--sky); flex: none; margin-top: 3px; }
 .socials { display: flex; gap: 12px; margin-top: 8px; }
-.socials a { width: 42px; height: 42px; border-radius: 12px; background: var(--navy); display: grid; place-items: center; color: #fff; transition: background .2s, transform .2s; }
+.socials a { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,.12); display: grid; place-items: center; color: #fff; transition: background .2s, transform .2s; }
 .socials a:hover { background: var(--sky); transform: translateY(-3px); }
 .socials svg { width: 20px; height: 20px; }
-.footer__bottom { border-top: 1px solid var(--line); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .85rem; }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,.14); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .85rem; }
 
 /* Floating WhatsApp */
 .wa-float {
