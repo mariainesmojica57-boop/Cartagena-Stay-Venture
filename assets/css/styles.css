@@ -588,3 +588,10 @@ h2.sec .num { color: var(--sky-600); font-size: .82rem; font-weight: 700; border
 .tour-row__right { display:inline-flex; align-items:center; gap:10px; }
 .tour-row--link svg { color: var(--sky-600); flex:none; transition: transform .2s; }
 .tour-row--link:hover svg { transform: translateX(3px); }
+
+/* Itinerario del tour */
+.tour-itin { display:grid; gap:0; margin-top:6px; }
+.tour-itin li { display:flex; gap:16px; align-items:baseline; padding:12px 2px; border-bottom:1px solid var(--line); color: var(--ink); }
+.tour-itin li:last-child { border-bottom:0; }
+.tour-itin__t { font-family: var(--font-head); font-weight:700; color: var(--sky-600); flex:none; min-width:158px; font-size:.92rem; }
+@media (max-width:560px){ .tour-itin li{ flex-direction:column; gap:2px; } .tour-itin__t{ min-width:0; } }
