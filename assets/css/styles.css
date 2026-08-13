@@ -583,3 +583,8 @@ h2.sec .num { color: var(--sky-600); font-size: .82rem; font-weight: 700; border
 .booking-card__price small { display:block; font-weight:500; font-size:.8rem; color: var(--muted); margin-top:2px; }
 .tour-meet { color: var(--muted); font-size:.96rem; }
 @media (max-width:560px){ .tour-plankton ul { grid-template-columns:1fr; } .tour-hero { aspect-ratio:4/3; } }
+
+/* Filas de tour con página de detalle */
+.tour-row__right { display:inline-flex; align-items:center; gap:10px; }
+.tour-row--link svg { color: var(--sky-600); flex:none; transition: transform .2s; }
+.tour-row--link:hover svg { transform: translateX(3px); }
