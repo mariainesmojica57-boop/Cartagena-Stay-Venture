@@ -561,3 +561,25 @@ h2.sec .num { color: var(--sky-600); font-size: .82rem; font-weight: 700; border
 @media (max-width: 980px){ .tours-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 760px){ .tours-list { grid-template-columns: 1fr; } }
 @media (max-width: 560px){ .tours-grid { grid-template-columns: 1fr; } }
+
+/* ---- Tarjetas de tour: dos botones ---- */
+.tour-card__actions { display:flex; gap:10px; margin-top:6px; }
+.tour-card__actions .btn { flex:1; justify-content:center; padding-left:12px; padding-right:12px; }
+/* ---- Página de detalle de tour ---- */
+.tour-hero { border-radius: var(--radius-lg); overflow:hidden; box-shadow: var(--shadow-lg); aspect-ratio:16/7; border:4px solid #fff; }
+.tour-hero img { width:100%; height:100%; object-fit:cover; }
+.tour-pricepill { display:inline-flex; align-items:baseline; gap:8px; background: var(--orange); color: var(--navy); font-family:var(--font-head); font-weight:800; font-size:1.35rem; padding:8px 20px; border-radius: var(--radius-pill); box-shadow:0 6px 16px rgba(22,36,63,.2); }
+.tour-pricepill small { font-weight:600; font-size:.72rem; opacity:.8; text-transform:uppercase; letter-spacing:.04em; }
+.amen--yes svg { color: var(--whatsapp); }
+.tour-plankton { margin-top:18px; background: linear-gradient(120deg, var(--navy), var(--navy-600)); color:#fff; border-radius: var(--radius); padding:18px 22px; }
+.tour-plankton h4 { color:#fff; font-size:1.05rem; margin-bottom:10px; }
+.tour-plankton ul { display:grid; grid-template-columns:repeat(2,1fr); gap:6px 18px; }
+.tour-plankton li { position:relative; padding-left:16px; font-size:.95rem; color:rgba(255,255,255,.9); }
+.tour-plankton li::before { content:"\2726"; position:absolute; left:0; color: var(--sky); }
+.tour-no { display:grid; gap:10px; }
+.tour-no li { display:flex; align-items:center; gap:10px; color: var(--muted); font-size:.98rem; }
+.tour-no svg { width:18px; height:18px; color: var(--orange-600); flex:none; }
+.booking-card__price { font-family: var(--font-head); font-weight:800; font-size:2rem; color: var(--navy); line-height:1.1; margin-bottom:12px; }
+.booking-card__price small { display:block; font-weight:500; font-size:.8rem; color: var(--muted); margin-top:2px; }
+.tour-meet { color: var(--muted); font-size:.96rem; }
+@media (max-width:560px){ .tour-plankton ul { grid-template-columns:1fr; } .tour-hero { aspect-ratio:4/3; } }
