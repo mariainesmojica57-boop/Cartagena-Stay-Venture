@@ -391,6 +391,21 @@ h2.sec .num { color: var(--sky-600); font-size: .82rem; font-weight: 700; border
 .ai-float { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 60px; height: 60px; border-radius: 50%; background: var(--sky); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(46,155,214,.5); transition: transform .2s; }
 .ai-float:hover { transform: scale(1.08); }
 .ai-float svg { width: 32px; height: 32px; color: #fff; }
+/* Segunda burbuja: agente de Tours (naranja, apilada encima) */
+.ai-float--tours { bottom: 98px; background: var(--orange); box-shadow: 0 8px 24px rgba(230,149,26,.5); }
+.ai-float--tours svg { color: #fff; }
+.ai-panel--tours .ai-panel__head { background: linear-gradient(120deg, var(--orange), var(--orange-600)); }
+.ai-panel--tours .ai-panel__body::before { color: var(--orange-600); }
+/* Etiqueta al lado de cada burbuja */
+.ai-float[data-label]::after {
+  content: attr(data-label);
+  position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+  background: #fff; color: var(--navy);
+  font-family: var(--font-head); font-weight: 700; font-size: .8rem;
+  padding: 7px 13px; border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md); white-space: nowrap; pointer-events: none;
+}
+@media (max-width: 600px) { .ai-float[data-label]::after { display: none; } }
 
 /* Ventana de chat del asistente (iframe con marco y fondo) */
 .ai-panel {

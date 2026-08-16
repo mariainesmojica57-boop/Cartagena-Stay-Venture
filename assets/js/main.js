@@ -165,17 +165,19 @@
   }
 
   /* ---------- 7. AI assistant chat window ---------- */
-  const aiBtn = document.querySelector('.ai-float');
-  if (aiBtn) {
-    const chatUrl = aiBtn.getAttribute('href');
+  // URL del agente de TOURS (Relevance AI). Pega aquí el enlace embed-chat del agente de tours.
+  const AGENT_TOURS_URL = 'https://app.relevanceai.com/agents/bcbe5a/86743503-8dd4-4f3e-90de-b4a9677a89e0/ca2b5baa-b6d7-4e91-997b-b0535d6b1162/embed-chat?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%23E6951A&bubble_icon=pd%2Fchat&input_placeholder_text=Escribe+tu+mensaje...&hide_logo=false&hide_description=false';
+
+  const setupAgent = (btn, opts) => {
+    const chatUrl = opts.url || btn.getAttribute('href');
     const panel = document.createElement('div');
-    panel.className = 'ai-panel';
+    panel.className = 'ai-panel' + (opts.panelClass ? ' ' + opts.panelClass : '');
     panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-label', 'Asistente virtual');
+    panel.setAttribute('aria-label', opts.title);
     panel.innerHTML =
       '<div class="ai-panel__head">' +
         '<img src="assets/img/logo.png" alt="Cartagena Stay Venture" />' +
-        '<div class="ai-panel__title">Asistente virtual<small>Cartagena Stay Venture</small></div>' +
+        '<div class="ai-panel__title">' + opts.title + '<small>Cartagena Stay Venture</small></div>' +
         '<div class="ai-panel__actions">' +
           '<button type="button" class="ai-panel__btn ai-panel__refresh" aria-label="Reiniciar conversación" title="Reiniciar conversación"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></button>' +
           '<a class="ai-panel__btn" href="' + chatUrl + '" target="_blank" rel="noopener" aria-label="Abrir en una pestaña" title="Abrir en una pestaña"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M21 3l-9 9M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/></svg></a>' +
@@ -188,10 +190,11 @@
     const body = panel.querySelector('.ai-panel__body');
     let loaded = false;
     const openPanel = () => {
+      document.querySelectorAll('.ai-panel.open').forEach((p) => { if (p !== panel) p.classList.remove('open'); });
       if (!loaded) {
         const ifr = document.createElement('iframe');
         ifr.src = chatUrl;
-        ifr.title = 'Asistente virtual';
+        ifr.title = opts.title;
         ifr.setAttribute('allow', 'microphone; clipboard-write');
         ifr.addEventListener('load', () => panel.classList.add('loaded'));
         body.appendChild(ifr);
@@ -201,7 +204,7 @@
     };
     const closePanel = () => panel.classList.remove('open');
 
-    aiBtn.addEventListener('click', (e) => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
       panel.classList.contains('open') ? closePanel() : openPanel();
     });
@@ -211,6 +214,31 @@
       if (ifr) { panel.classList.remove('loaded'); ifr.src = chatUrl; }
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
+  };
+
+  // Asistente de Apartamentos (botón ya presente en el HTML)
+  const aiBtn = document.querySelector('.ai-float:not(.ai-float--tours)');
+  if (aiBtn) {
+    aiBtn.dataset.label = 'Apartamentos';
+    aiBtn.setAttribute('aria-label', 'Chatea sobre apartamentos');
+    aiBtn.title = 'Chatea sobre apartamentos';
+    aiBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M15 21V9h4a1 1 0 0 1 1 1v11M8 8h.01M11 8h.01M8 12h.01M11 12h.01M8 16h.01M11 16h.01"/></svg>';
+    setupAgent(aiBtn, { title: 'Apartamentos' });
+  }
+
+  // Agente de Tours: se crea solo si hay una URL configurada
+  if (AGENT_TOURS_URL && AGENT_TOURS_URL.indexOf('http') === 0) {
+    const tBtn = document.createElement('a');
+    tBtn.className = 'ai-float ai-float--tours';
+    tBtn.href = AGENT_TOURS_URL;
+    tBtn.target = '_blank';
+    tBtn.rel = 'noopener';
+    tBtn.dataset.label = 'Tours';
+    tBtn.setAttribute('aria-label', 'Chatea sobre tours');
+    tBtn.title = 'Chatea sobre tours';
+    tBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20 3 22V6l6-2m0 16 6-2m-6 2V4m6 14 6 2V6l-6-2m0 16V4m0 0L9 6"/></svg>';
+    document.body.appendChild(tBtn);
+    setupAgent(tBtn, { url: AGENT_TOURS_URL, title: 'Tours', panelClass: 'ai-panel--tours' });
   }
 
   /* ---------- 8. Footer year ---------- */
