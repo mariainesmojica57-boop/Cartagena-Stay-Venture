@@ -14,37 +14,18 @@
   onScroll();
 
   /* ---------- 1b. Hero video autoplay (refuerzo para móvil) ---------- */
-  const heroVideo = document.querySelector('.hero__video');
-  if (heroVideo) {
-    // Algunos navegadores móviles solo hacen autoplay si 'muted' y 'playsinline'
-    // están fijados como propiedades, no solo como atributos.
-    heroVideo.muted = true;
-    heroVideo.defaultMuted = true;
-    heroVideo.setAttribute('muted', '');
-    heroVideo.playsInline = true;
-    heroVideo.setAttribute('playsinline', '');
-
-    const tryPlayHero = () => {
-      const p = heroVideo.play();
-      if (p && typeof p.catch === 'function') p.catch(function () {});
-    };
-
-    tryPlayHero();
-    heroVideo.addEventListener('loadeddata', tryPlayHero, { once: true });
-    heroVideo.addEventListener('canplay', tryPlayHero, { once: true });
-
-    // Respaldo: si el navegador bloquea el autoplay, arranca en la primera
-    // interacción del usuario (toque, scroll o clic).
-    const kickHero = () => {
-      tryPlayHero();
-      window.removeEventListener('touchstart', kickHero);
-      window.removeEventListener('scroll', kickHero);
-      document.removeEventListener('click', kickHero);
-    };
-    window.addEventListener('touchstart', kickHero, { passive: true, once: true });
-    window.addEventListener('scroll', kickHero, { passive: true, once: true });
-    document.addEventListener('click', kickHero, { once: true });
-  }
+  document.querySelectorAll('.hero__video, .video-showcase__vid').forEach((vid) => {
+    vid.muted = true; vid.defaultMuted = true; vid.setAttribute('muted', '');
+    vid.playsInline = true; vid.setAttribute('playsinline', '');
+    const tryPlay = () => { const p = vid.play(); if (p && typeof p.catch === 'function') p.catch(function () {}); };
+    tryPlay();
+    vid.addEventListener('loadeddata', tryPlay, { once: true });
+    vid.addEventListener('canplay', tryPlay, { once: true });
+    const kick = () => { tryPlay(); window.removeEventListener('touchstart', kick); window.removeEventListener('scroll', kick); document.removeEventListener('click', kick); };
+    window.addEventListener('touchstart', kick, { passive: true, once: true });
+    window.addEventListener('scroll', kick, { passive: true, once: true });
+    document.addEventListener('click', kick, { once: true });
+  });
 
   /* ---------- 2. Mobile menu ---------- */
   const burger = document.querySelector('.burger');

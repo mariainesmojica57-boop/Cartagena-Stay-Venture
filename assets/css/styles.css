@@ -611,3 +611,8 @@ h2.sec .num { color: var(--sky-600); font-size: .82rem; font-weight: 700; border
 .tour-itin li:last-child { border-bottom:0; }
 .tour-itin__t { font-family: var(--font-head); font-weight:700; color: var(--sky-600); flex:none; min-width:158px; font-size:.92rem; }
 @media (max-width:560px){ .tour-itin li{ flex-direction:column; gap:2px; } .tour-itin__t{ min-width:0; } }
+
+/* Video showcase (dron) arriba de la galería */
+.video-showcase { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 16/9; margin-bottom: 56px; background:#000; border: 3px solid rgba(255,255,255,.9); }
+.video-showcase__vid { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 600px){ .video-showcase { margin-bottom: 40px; } }
